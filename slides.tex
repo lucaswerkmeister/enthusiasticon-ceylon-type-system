@@ -1,10 +1,74 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
 
 \title{The Ceylon Type System}
 \author{Lucas Werkmeister}
 \date{EnthusiastiCon 2018}
+
+\lstdefinelanguage{ceylon}{
+  morekeywords={
+    assembly, module, package, import,
+    alias, class, interface, object, given, value, assign, void, function, new,
+    of, extends, satisfies, abstracts,
+    in, out,
+    return, break, continue, throw,
+    assert, dynamic,
+    if, else, switch, case, for, while, try, catch, finally, then, let,
+    this, outer, super,
+    is, exists, nonempty
+  },
+  morekeywords=[2]{
+    shared, abstract, formal, default, actual, variable, late, native, deprecated, final, sealed, annotation, suppressWarnings, small, static
+  },
+  morekeywords=[3]{
+    doc, by, license, see, throws, tagged
+  },
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+}
+
+% all colors taken from plugins/org.eclipse.ceylon.ide.eclipse.ui/plugin.xml in the ceylon-ide-eclipse repository
+\definecolor{org.eclipse.ceylon.ide.eclipse.ui.theme.color.keywords}{RGB}{76,76,76}
+\definecolor{org.eclipse.ceylon.ide.eclipse.ui.theme.color.annotations}{RGB}{51,153,204}
+\definecolor{org.eclipse.ceylon.ide.eclipse.ui.theme.color.identifiers}{RGB}{0,51,153}
+\definecolor{org.eclipse.ceylon.ide.eclipse.ui.theme.color.types}{RGB}{153,0,102}
+\colorlet{org.eclipse.ceylon.ide.eclipse.ui.theme.color.numbers}{blue}
+\colorlet{org.eclipse.ceylon.ide.eclipse.ui.theme.color.strings}{blue}
+\colorlet{org.eclipse.ceylon.ide.eclipse.ui.theme.color.comments}{darkgray}
+% https://tex.stackexchange.com/a/4199/25264
+\makeatletter
+\newcommand*\ceylonIdeEclipseIdentifier{%
+  \expandafter\ceylonIdeEclipseIdentifier@style\the\lst@token\relax%
+}
+\def\ceylonIdeEclipseIdentifier@style#1#2\relax{%
+  \ifcat#1%
+    \relax%
+  \else%
+    \ifnum`#1=\uccode`#1%
+      \color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.types}%
+    \else%
+      \color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.identifiers}%
+    \fi%
+  \fi%
+}
+\makeatother
+\lstdefinestyle{org.eclipse.ceylon.ide.eclipse.ui.theme}{
+  keywordstyle=\bfseries\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.keywords},
+  keywordstyle=[2]\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.annotations},
+  keywordstyle=[3]\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.annotations},
+  identifierstyle=\ceylonIdeEclipseIdentifier,
+  numberstyle=\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.numbers},
+  stringstyle=\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.strings},
+  commentstyle=\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.comments},
+}
+
+\lstset{language=ceylon,style=org.eclipse.ceylon.ide.eclipse.ui.theme}
 
 \begin{document}
 
