@@ -1,0 +1,17 @@
+# editor files
+*~
+\#*
+
+# LaTeX files
+*.aux
+*.log
+*.nav
+*.snm
+*.toc
+*.vrb
+*.out
+*.pdf
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
