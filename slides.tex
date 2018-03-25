@@ -68,7 +68,44 @@
   commentstyle=\color{org.eclipse.ceylon.ide.eclipse.ui.theme.color.comments},
 }
 
-\lstset{language=ceylon,style=org.eclipse.ceylon.ide.eclipse.ui.theme}
+% all colors taken from typechecker/en/styles/ceylon.css in the ceylon repository
+\definecolor{ceylon.rainbow.comment}{HTML}{008b8b} % darkcyan
+\colorlet{ceylon.rainbow.constant.numeric}{blue}
+\colorlet{ceylon.rainbow.constant.string}{blue}
+\definecolor{ceylon.rainbow.entity.function}{RGB}{51,153,204}
+\definecolor{ceylon.rainbow.entity.class}{RGB}{153,0,102}
+\definecolor{ceylon.rainbow.variable.global}{RGB}{0,51,153}
+\definecolor{ceylon.rainbow.keyword}{RGB}{76,76,76}
+% https://tex.stackexchange.com/a/4199/25264
+\makeatletter
+\newcommand*\ceylonRainbowIdentifier{%
+  \expandafter\ceylonRainbowIdentifier@style\the\lst@token\relax%
+}
+\def\ceylonRainbowIdentifier@style#1#2\relax{%
+  \ifcat#1%
+    \relax%
+  \else%
+    \ifnum`#1=\uccode`#1%
+      \color{ceylon.rainbow.entity.class}%
+    \else%
+      \color{ceylon.rainbow.variable.global}%
+    \fi%
+  \fi%
+}
+\makeatother
+\lstdefinestyle{ceylon.rainbow}{ % mostly identical to org.eclipse.ceylon.ide.eclipse.ui.theme – see also https://github.com/eclipse/ceylon/issues/7343
+  keywordstyle=\bfseries\color{ceylon.rainbow.keyword},
+  keywordstyle=[2]\color{ceylon.rainbow.entity.function},
+  keywordstyle=[3]\color{ceylon.rainbow.entity.function},
+  identifierstyle=\ceylonRainbowIdentifier,
+  numberstyle=\color{ceylon.rainbow.constant.numeric},
+  stringstyle=\color{ceylon.rainbow.constant.string},
+  commentstyle=\color{ceylon.rainbow.comment},
+}
+
+\lstset{language=ceylon}
+%\lstset{style=org.eclipse.ceylon.ide.eclipse.ui.theme}
+\lstset{style=ceylon.rainbow}
 
 \begin{document}
 
