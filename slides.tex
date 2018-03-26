@@ -167,4 +167,25 @@ shared void printScaled(
   \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Flow-sensitive typing}
+  Instead of Java’s
+  \begin{lstlisting}[language=java]
+Object o = ...;
+if (o instanceof String) {
+  String s = (String)o;
+  String su = s.toUpperCase();
+}
+  \end{lstlisting}
+  \pause
+  you simply write
+  \begin{lstlisting}
+Object o = ...;
+if (is String o) {
+  // o has type String now
+  String su = o.uppercased; // look ma, no cast!
+}
+  \end{lstlisting}
+\end{frame}
+
 \end{document}
