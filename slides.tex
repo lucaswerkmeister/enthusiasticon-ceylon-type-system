@@ -188,4 +188,106 @@ if (is String o) {
   \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Flow-sensitive typing}
+  \begin{onlyenv}<1>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) {
+  // arg: String
+
+
+
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+
+
+
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+
+
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<4>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<5>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+  //    = String|<Null&Object>
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<6>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+  //    = String|<Null&Object>
+  //    = String|Nothing
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<7>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+  //    = String|<Null&Object>
+  //    = String|Nothing
+  //    = String
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+\end{frame}
+
 \end{document}
