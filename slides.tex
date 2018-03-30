@@ -105,6 +105,45 @@
   commentstyle=\color{ceylon.rainbow.comment},
 }
 
+% all colors taken from stylesheets/themes/paraiso-dark.css in the ceylon-lang.org repository
+\definecolor{ceylon.paraiso.background}{HTML}{2f1e2e}
+\definecolor{ceylon.paraiso.foreground}{HTML}{e7e9db}
+\definecolor{ceylon.paraiso.comment}{HTML}{776e71}
+\definecolor{ceylon.paraiso.constant.numeric}{HTML}{f99b15}
+\definecolor{ceylon.paraiso.constant.string}{HTML}{48b685}
+\definecolor{ceylon.paraiso.entity.function}{HTML}{06b6ef}
+\definecolor{ceylon.paraiso.entity.class}{HTML}{fec418}
+\definecolor{ceylon.paraiso.variable.global}{HTML}{ef6155}
+\definecolor{ceylon.paraiso.keyword}{HTML}{b8baaf}
+% https://tex.stackexchange.com/a/4199/25264
+\makeatletter
+\newcommand*\ceylonParaisoIdentifier{%
+  \expandafter\ceylonParaisoIdentifier@style\the\lst@token\relax%
+}
+\def\ceylonParaisoIdentifier@style#1#2\relax{%
+  \ifcat#1%
+    \relax%
+  \else%
+    \ifnum`#1=\uccode`#1%
+      \color{ceylon.paraiso.entity.class}%
+    \else%
+      \color{ceylon.paraiso.variable.global}%
+    \fi%
+  \fi%
+}
+\makeatother
+\lstdefinestyle{ceylon.paraiso}{ % WARNING: do not use with \lstinline – \lstinline does not apply the backgroundcolor and this theme is all but unreadable against a light background
+  basicstyle=\ttfamily\color{ceylon.paraiso.foreground},
+  backgroundcolor=\color{ceylon.paraiso.background},
+  keywordstyle=\color{ceylon.paraiso.keyword},
+  keywordstyle=[2]\color{ceylon.paraiso.entity.function},
+  keywordstyle=[3]\color{ceylon.paraiso.entity.function},
+  identifierstyle=\ceylonParaisoIdentifier,
+  numberstyle=\color{ceylon.paraiso.constant.numeric},
+  stringstyle=\color{ceylon.paraiso.constant.string},
+  commentstyle=\color{ceylon.paraiso.comment},
+}
+
 \lstset{language=ceylon}
 %\lstset{style=org.eclipse.ceylon.ide.eclipse.ui.theme}
 \lstset{style=ceylon.rainbow}
