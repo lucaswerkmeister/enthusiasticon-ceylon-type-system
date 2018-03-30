@@ -166,16 +166,36 @@
   \end{itemize}
 \end{frame}
 
-% TODO is this worth the time it takes up?
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Type systems}
-  Adding type information to your code helps…
-  \begin{itemize}
-  \item …people reading the code to understand it
-  \item …the compiler to spot bugs
-  \item …the IDE to make useful suggestions when writing new code
-  \item …the IDE to do the correct thing when refactoring existing code
-  \end{itemize}
+  \begin{onlyenv}<1>
+    \begin{lstlisting}
+function timesTwo(num) {
+  return num * 2;
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \begin{lstlisting}
+Float timesTwo(Float num) {
+  return num * 2;
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{lstlisting}
+Float timesTwo(Float num) {
+  return num << 1;
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<4>
+    \begin{lstlisting}
+Float timesTwo(Float num) {
+  return num << 1; // error: only ints support bitshift
+}
+    \end{lstlisting}
+  \end{onlyenv}
 \end{frame}
 
 \begin{frame}[fragile]
