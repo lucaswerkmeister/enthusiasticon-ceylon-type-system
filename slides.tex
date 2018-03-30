@@ -233,7 +233,7 @@ if (exists arg) {
     \begin{lstlisting}
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
-  // arg: <String?>&Object
+  // arg: String
 
 
 
@@ -248,7 +248,7 @@ if (exists arg) { // is Object arg
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
-  //    = <String|Null>&Object
+
 
 
 
@@ -263,7 +263,7 @@ String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
   //    = <String|Null>&Object
-  //    = <String&Object>|<Null&Object>
+
 
 
 
@@ -278,7 +278,7 @@ if (exists arg) { // is Object arg
   // arg: <String?>&Object
   //    = <String|Null>&Object
   //    = <String&Object>|<Null&Object>
-  //    = String|<Null&Object>
+
 
 
   print(arg.uppercased);
@@ -293,13 +293,27 @@ if (exists arg) { // is Object arg
   //    = <String|Null>&Object
   //    = <String&Object>|<Null&Object>
   //    = String|<Null&Object>
-  //    = String|Nothing
+
 
   print(arg.uppercased);
 }
     \end{lstlisting}
   \end{onlyenv}
   \begin{onlyenv}<7>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+  //    = String|<Null&Object>
+  //    = String|Nothing
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<8>
     \begin{lstlisting}
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
