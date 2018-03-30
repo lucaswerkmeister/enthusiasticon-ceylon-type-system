@@ -272,12 +272,12 @@ if (exists arg) { // is Object arg
     \end{lstlisting}
   \end{onlyenv}
   \begin{onlyenv}<5>
-    \begin{lstlisting}
+    \begin{lstlisting}[escapechar=!]
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
-  //    = <String|Null>&Object
-  //    = <String&Object>|<Null&Object>
+  //    = <String|Null>&Object !$(\text{String} + \text{Null}) \cdot \text{Object}$!
+
 
 
 
@@ -286,13 +286,13 @@ if (exists arg) { // is Object arg
     \end{lstlisting}
   \end{onlyenv}
   \begin{onlyenv}<6>
-    \begin{lstlisting}
+    \begin{lstlisting}[escapechar=!]
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
-  //    = <String|Null>&Object
-  //    = <String&Object>|<Null&Object>
-  //    = String|<Null&Object>
+  //    = <String|Null>&Object !$(\text{String} + \text{Null}) \cdot \text{Object}$!
+                               !$\text{String}\cdot\text{Object} + \text{Null}\cdot\text{Object}$!
+
 
 
   print(arg.uppercased);
@@ -306,6 +306,34 @@ if (exists arg) { // is Object arg
   // arg: <String?>&Object
   //    = <String|Null>&Object
   //    = <String&Object>|<Null&Object>
+
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<8>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
+  //    = String|<Null&Object>
+
+
+  print(arg.uppercased);
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<9>
+    \begin{lstlisting}
+String? arg = process.arguments.first;
+if (exists arg) { // is Object arg
+  // arg: <String?>&Object
+  //    = <String|Null>&Object
+  //    = <String&Object>|<Null&Object>
   //    = String|<Null&Object>
   //    = String|Nothing
 
@@ -313,7 +341,7 @@ if (exists arg) { // is Object arg
 }
     \end{lstlisting}
   \end{onlyenv}
-  \begin{onlyenv}<8>
+  \begin{onlyenv}<10>
     \begin{lstlisting}
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
