@@ -308,7 +308,7 @@ if (exists arg) { // is Object arg
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
-  //    = <String|Null>&Object !$(\text{String} + \text{Null}) \cdot \text{Object}$!
+  //    = <String|Null>&Object !$(\text{String} \cup \text{Null}) \cap \text{Object}$!
 
 
 
@@ -322,8 +322,8 @@ if (exists arg) { // is Object arg
 String? arg = process.arguments.first;
 if (exists arg) { // is Object arg
   // arg: <String?>&Object
-  //    = <String|Null>&Object !$(\text{String} + \text{Null}) \cdot \text{Object}$!
-                               !$\text{String}\cdot\text{Object} + \text{Null}\cdot\text{Object}$!
+  //    = <String|Null>&Object !$(\text{String} \cup \text{Null}) \cap \text{Object}$!
+                               !$(\text{String}\cap\text{Object}) \cup (\text{Null}\cap\text{Object})$!
 
 
 
