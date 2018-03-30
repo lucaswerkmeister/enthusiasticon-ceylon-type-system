@@ -5,6 +5,17 @@
 \usepackage{xcolor}
 
 \beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[text line]{%
+  \parbox{0.3\linewidth}{%
+    \insertshortauthor%
+  }%
+  \hfill%
+  \parbox{0.3\linewidth}{%
+    \url{https://goo.gl/zCbUxi}%
+  }%
+  \hfill%
+  \raggedleft\insertpagenumber%
+}
 
 \title{The Ceylon Type System}
 \author{Lucas Werkmeister}
