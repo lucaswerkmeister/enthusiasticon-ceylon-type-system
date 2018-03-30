@@ -228,7 +228,7 @@ shared void printScaled(
   \frametitle{Flow-sensitive typing}
   Instead of Java’s
   \begin{lstlisting}[language=java]
-Object o = ...;
+Object o = getSomething();
 if (o instanceof String) {
   String s = (String)o;
   String su = s.toUpperCase();
@@ -237,7 +237,7 @@ if (o instanceof String) {
   \pause
   you simply write
   \begin{lstlisting}
-Object o = ...;
+Object o = getSomething();
 if (is String o) {
   // o has type String now
   String su = o.uppercased; // look ma, no cast!
