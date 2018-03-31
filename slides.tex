@@ -179,7 +179,7 @@ function timesTwo(num) {
   \end{onlyenv}
   \begin{onlyenv}<2>
     \begin{lstlisting}
-Float timesTwo(Float num) {
+function timesTwo(Float num) {
   return num * 2;
 }
     \end{lstlisting}
@@ -187,11 +187,18 @@ Float timesTwo(Float num) {
   \begin{onlyenv}<3>
     \begin{lstlisting}
 Float timesTwo(Float num) {
-  return num << 1;
+  return num * 2;
 }
     \end{lstlisting}
   \end{onlyenv}
   \begin{onlyenv}<4>
+    \begin{lstlisting}
+Float timesTwo(Float num) {
+  return num << 1;
+}
+    \end{lstlisting}
+  \end{onlyenv}
+  \begin{onlyenv}<5>
     \begin{lstlisting}
 Float timesTwo(Float num) {
   return num << 1; // error: only ints support bitshift
